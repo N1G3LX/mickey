@@ -1,7 +1,7 @@
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div className="bg-[#f6f7fb] flex-grow p-16">Footer</div>
   )
 }
 

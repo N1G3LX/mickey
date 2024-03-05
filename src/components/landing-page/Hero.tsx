@@ -7,11 +7,11 @@ const Hero = () => {
         <div>
             <div className='generalContainer flex flex-col space-y-6'>
                 <div className='mt-20 flow-root sm:mt-24'>
-                    <h3 className=' text-[40px] font-semibold'>FIND DREAM JOB WITH JOB PORTAL</h3>
-                    <p className=' text-[30px] text-blue-400 font-semibold'>OWN A GOOD Resume-CV AND DREAM JOB</p>
+                    <h3 className='text-[32px] md:text-[40px] font-semibold'>FIND DREAM JOB WITH JOB PORTAL</h3>
+                    <p className=' text-[24px] md:text-[30px] text-blue-400 font-semibold'>OWN A GOOD Resume-CV AND DREAM JOB</p>
                     <p className='text-xl'>10,000+ job opportunities are successfully connected every day</p>
                 </div>
-                <div className='flex gap-3'>
+                <div className='flex gap-3 md:flex-row flex-col'>
                     <Button
                         size={'lg'}
                         className='bg-[#4353ff] font-bold'
