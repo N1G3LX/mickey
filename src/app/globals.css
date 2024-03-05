@@ -73,4 +73,7 @@
   body {
     @apply bg-background text-foreground;
   }
+  .generalContainer{
+    @apply mx-auto w-[95%] max-w-screen-xl px-2.5 
+  }
 }
