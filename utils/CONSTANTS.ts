@@ -13,12 +13,12 @@ export const navLinks = [
     {
         id: 'jobs',
         href: '/jobs',
-        title: "Home"
+        title: "Jobs"
     },
     {
         id: 'companies',
         href: '/companies',
-        title: "Companies"
+        title: "Resume"
     },
 ]
 
