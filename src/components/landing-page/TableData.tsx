@@ -33,7 +33,7 @@ const TableData = () => {
         )
     }
     return (
-        <div className="w-[90%] md:w-[80%] mx-auto text-lg">
+        <div className="w-[96%] md:w-[80%] mx-auto text-lg">
             <Table>
                 <TableHeader>
                     <TableRow>
@@ -48,9 +48,9 @@ const TableData = () => {
                 {
                         data?.holders.map((holder: Holder) => (
                             <TableRow key={holder.address}>
-                                <TableCell className="font-medium">{holder.address}</TableCell>
+                                <TableCell className="font-medium break-words">{holder.address}</TableCell>
                                 <TableCell>{holder.balance}</TableCell>
-                                <TableCell>{holder.share}</TableCell>
+                                <TableCell>Share  {holder.share}</TableCell>
 
                             </TableRow>
 

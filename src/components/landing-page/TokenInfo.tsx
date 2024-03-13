@@ -31,9 +31,11 @@ const TokenInfo = () => {
             <h1 className="font-bold">Holders Count: </h1>
             <p>{data.holdersCount}</p>
         </div>
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-4 items-start md:items-center md:flex-row
+        flex-col
+        break-words">
             <h1 className="font-bold text-break">Owner: </h1>
-            <p>{data.owner}</p>
+            <p className="break-words md:text-sm text-xs">{data.owner}</p>
         </div>
         <div className="flex gap-4 items-center">
             <h1 className="font-bold">Transfer Count: </h1>

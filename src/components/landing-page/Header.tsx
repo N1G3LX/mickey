@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <header className=" py-6 shadow-md w-full">
             <nav className=' generalContainer flex justify-between  '>
-                <div className='text-xl'>
+                <div className='text-xl font-bold'>
                     Mickey Token Holders Watch
                 </div>
                 
