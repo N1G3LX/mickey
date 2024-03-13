@@ -18,11 +18,11 @@ const JobCard = () => {
 
         
         <div className="flex flex-col space-y-5">
-          <h3>Job title</h3>
+          <h3 className="font-bold text-xl">Frontend Developer</h3>
           <div className="flex gap-3 items-center">
             <div className="flex gap-2 items-center font-medium">
               <CalendarClock height={18} width={18} />
-              <p className="font-medium">Accounting</p>
+              <p className="font-medium">Software Engineering</p>
 
             </div>
 

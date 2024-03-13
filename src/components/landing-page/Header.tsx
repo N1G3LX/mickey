@@ -9,28 +9,9 @@ const Header = () => {
         <header className=" py-6 shadow-md w-full">
             <nav className=' generalContainer flex justify-between  '>
                 <div className='text-xl'>
-                    logo
+                    Mickey Token Holders Watch
                 </div>
-                <ul className='hidden md:flex gap-4 '>
-                    {navLinks.map((link) => (
-                        <li className='font-medium ' key={link.id}>
-
-                            <Link href={link.href}>
-                                {link.title}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-
-                <div className='md:flex hidden gap-4 '>
-                    <Button variant="outline">Login</Button>
-                    <Button >Signup</Button>
-
-
-                </div>
-                <div className='md:hidden flex'>
-                        <MenuIcon />
-                </div>
+                
             </nav>
         </header>
     )

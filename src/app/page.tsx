@@ -1,16 +1,19 @@
+
 import Footer from "@/components/landing-page/Footer";
 import Header from "@/components/landing-page/Header";
-import Hero from "@/components/landing-page/Hero";
-import LatestJobsContainer from "@/components/landing-page/LatestJobsContainer";
-import Image from "next/image";
+import { API_KEY, BASE_URL, TOKEN_ADDRESS, fetcher } from "../../utils/fetcher";
+import useSWR from "swr";
+import TableData from "@/components/landing-page/TableData";
+import TokenInfo from "@/components/landing-page/TokenInfo";
 
 export default function Home() {
+ 
   return (
    <main className="flex flex-col">
     <Header />
-    <Hero />
-    <LatestJobsContainer />
-    <Footer />
+    <TokenInfo />
+    <TableData />
+    
    </main>
   );
 }
