@@ -6,7 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 
 const TokenInfo = () => {
     const { data, error, isLoading } = useSWR(`${BASE_URL}/getTokenInfo/${TOKEN_ADDRESS}?apiKey=${API_KEY}`, fetcher)
-
+console.log(data)
     if(isLoading){
         return(
             <div className="flex flex-col space-y-3 w-[95%] py-6 mx-auto">
@@ -19,26 +19,26 @@ const TokenInfo = () => {
         )
     }
     return (
-    <div className="w-full md:w-[80%] py-6 mx-auto flex flex-col space-y-3 border  my-6 px-4 rounded-md shadow-md">
+    <div className="w-[95%] md:w-[80%] py-6 mx-auto flex flex-col space-y-3 border-slate-500 border  my-6 px-4 rounded-md shadow-lg">
         <div>
-            <h1 className="font-bold text-xl ">Token Information</h1>
+            <h1 className="font-semibold text-xl  ">Token Information</h1>
         </div>
-        <div className="flex gap-4 items-center">
-            <h1 className="font-bold">Token Name: </h1>
+        <div className="flex gap-3 items-center">
+            <h1 className="font-semibold">Token Name: </h1>
             <p>{data.name}</p>
         </div>
-        <div className="flex gap-4 items-center">
-            <h1 className="font-bold">Holders Count: </h1>
+        <div className="flex gap-3 items-center">
+            <h1 className="font-semibold">Holders Count: </h1>
             <p>{data.holdersCount}</p>
         </div>
-        <div className="flex gap-4 items-start md:items-center md:flex-row
+        <div className="flex gap-3 items-start md:items-center md:flex-row
         flex-col
         break-words">
-            <h1 className="font-bold text-break">Owner: </h1>
+            <h1 className="font-semibold text-break">Owner: </h1>
             <p className="break-words md:text-sm text-xs">{data.owner}</p>
         </div>
-        <div className="flex gap-4 items-center">
-            <h1 className="font-bold">Transfer Count: </h1>
+        <div className="flex gap-3 items-center">
+            <h1 className="font-semibold">Transfer Count: </h1>
             <p>{data.transfersCount}
 </p>
         </div>
