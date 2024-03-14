@@ -12,12 +12,17 @@ export const useAuthContext = () => useContext(AuthContext);
 
 export function AuthContextProvider({ children }: { children: React.ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    const storedIsAuthenticated = localStorage.getItem('isAuthenticated');
-    return storedIsAuthenticated ? JSON.parse(storedIsAuthenticated) : false;
+    if (typeof window !== 'undefined') {
+      const storedIsAuthenticated = localStorage.getItem('isAuthenticated');
+      return storedIsAuthenticated ? JSON.parse(storedIsAuthenticated) : false;
+    }
+    return false; // Default value if localStorage is not available
   });
 
   useEffect(() => {
-    localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
+    }
   }, [isAuthenticated]);
 
   return (
