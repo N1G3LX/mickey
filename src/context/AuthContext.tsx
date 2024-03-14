@@ -1,6 +1,5 @@
 'use client'
-import React, { createContext, useContext, useState } from 'react';
-
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -11,10 +10,16 @@ export const AuthContext = createContext({} as AuthContextType);
 
 export const useAuthContext = () => useContext(AuthContext);
 
-export function AuthContextProvider({
-  children,
-}: {  children: React.ReactNode }) {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
+export function AuthContextProvider({ children }: { children: React.ReactNode }) {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
+    const storedIsAuthenticated = localStorage.getItem('isAuthenticated');
+    return storedIsAuthenticated ? JSON.parse(storedIsAuthenticated) : false;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
+  }, [isAuthenticated]);
+
   return (
     <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
       {children}

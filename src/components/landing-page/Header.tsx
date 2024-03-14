@@ -5,9 +5,11 @@ import { navLinks } from '../../../utils/CONSTANTS'
 import Link from 'next/link'
 import { MenuIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { useAuthContext } from '@/context/AuthContext'
 
 const Header = () => {
     const router = useRouter()
+  const {setIsAuthenticated } = useAuthContext()
     return (
         <header className=" py-6 shadow-md w-full">
             <nav className=' generalContainer flex justify-between items-center  '>
@@ -16,7 +18,10 @@ const Header = () => {
                 </div>
 
                 <Button
-                onClick={() => router.push('/')}
+                onClick={() => {
+                    setIsAuthenticated(false)
+                    router.push('/')
+                }}
                 variant={'destructive'}>
                     Log out
                 </Button>

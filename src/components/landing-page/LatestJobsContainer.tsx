@@ -8,7 +8,6 @@ import { usePathname } from 'next/navigation'
 const LatestJobsContainer = () => {
   const arr = [1, 2, 3, 4, 5, 6]
   const pathName = usePathname()
-  console.log(pathName)
   return (
     <div className='my-12 generalContainer'>
       <div className='text-center py-7'>

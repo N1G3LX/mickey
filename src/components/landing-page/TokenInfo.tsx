@@ -6,7 +6,6 @@ import { Skeleton } from "@/components/ui/skeleton"
 
 const TokenInfo = () => {
     const { data, error, isLoading } = useSWR(`${BASE_URL}/getTokenInfo/${TOKEN_ADDRESS}?apiKey=${API_KEY}`, fetcher)
-console.log(data)
     if(isLoading){
         return(
             <div className="flex flex-col space-y-3 w-[95%] py-6 mx-auto">
