@@ -119,8 +119,8 @@ const formatBalance = (balance) =>{
                                     {shortenAddress(holder.address)}
                                     </Link>
                                     </TableCell>
-                                <TableCell className="font-bold">
-                                {formatBalance(`${holder.balance}`)}
+                                <TableCell className="font-semibold">
+                                {formatBalance(`${holder.balance}`)} MICKEY
                         
                                     </TableCell>
 
