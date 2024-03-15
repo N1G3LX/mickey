@@ -6,6 +6,13 @@ import { Toaster } from "@/components/ui/toaster"
 import { AuthContextProvider } from "@/context/AuthContext";
 const inter = Inter({ subsets: ["latin"] });
 
+import { Roboto } from 'next/font/google'
+ 
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
+})
+
 export const metadata: Metadata = {
   title: "Mickey Token watch",
   description: "Mickey Token",
@@ -21,7 +28,7 @@ export default function RootLayout({
 
       <html lang="en">
 
-        <body className={cn('min-h-screen font-sans antialiased grainy', inter.className)}>{children}</body>
+        <body className={cn('min-h-screen font-sans antialiased grainy', roboto.className)}>{children}</body>
         <Toaster />
       </html>
     </AuthContextProvider>

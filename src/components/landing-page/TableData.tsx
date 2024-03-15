@@ -71,7 +71,7 @@ const TableData = () => {
         )
     }
     return (
-        <div className="w-[96%] md:w-[80%] mx-auto text-lg">
+        <div className="w-[96%] font-sans md:w-[80%] mx-auto text-lg">
             <Table>
                 <TableHeader>
                     <TableRow className=" rounded-lg font-bold text-balance md:text-lg">
@@ -91,7 +91,7 @@ const TableData = () => {
                                 <TableCell className="font-medium sticky break-words max-w-[200px]">{shortenAddress(holder.address)}</TableCell>
                                 <TableCell className="font-bold">{formatTokenBalance(holder.balance)}</TableCell>
 
-                                <TableCell>Share  {holder.share}</TableCell>
+                                <TableCell>{holder.share}</TableCell>
                                 <TableCell className="font-medium break-words"></TableCell>
 
                                 <TableCell>notes</TableCell>
