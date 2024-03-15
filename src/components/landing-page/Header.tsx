@@ -17,7 +17,23 @@ const Header = () => {
                     Mickey Token Holders 
                 </div>
 
+                <div className='flex gap-2'>
+                    <Button variant={'outline'}>
+                        <Link href={'/explorer'}>
+                        Tags 
+                        </Link>
+                    </Button>
+
+                    <Button variant={'outline'}>
+                    <Link href={'/portal'}>
+                        Balances
+                        </Link>
+                    </Button>
+                </div>
+                
+
                 <Button
+                className='md:inline-block hidden'
                 onClick={() => {
                     setIsAuthenticated(false)
                     router.push('/')

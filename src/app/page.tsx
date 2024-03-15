@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation";
 import { useAuthContext } from "@/context/AuthContext";
+import { EXPLORER_DATA } from "../../utils/ethplorer";
 
 
 export default function Home() {
@@ -44,6 +45,7 @@ export default function Home() {
     }
 
   }
+
   return (
     <main className="flex flex-col h-screen items-center justify-center">
       <h3 className="font-bold py-3 ">Welcome to Mickey token watch</h3>

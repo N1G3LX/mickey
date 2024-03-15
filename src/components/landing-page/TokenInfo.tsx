@@ -3,9 +3,11 @@ import useSWR from "swr";
 import { API_KEY, BASE_URL, TOKEN_ADDRESS, fetcher } from "../../../utils/fetcher";
 import { Skeleton } from "@/components/ui/skeleton"
 
+import {ethers} from "ethers"
 
 const TokenInfo = () => {
     const { data, error, isLoading } = useSWR(`${BASE_URL}/getTokenInfo/${TOKEN_ADDRESS}?apiKey=${API_KEY}`, fetcher)
+   
     if(isLoading){
         return(
             <div className="flex flex-col space-y-3 w-[95%] py-6 mx-auto">
@@ -37,8 +39,8 @@ const TokenInfo = () => {
             <p className="break-words md:text-sm text-xs">{data.owner}</p>
         </div>
         <div className="flex gap-3 items-center">
-            <h1 className="font-semibold">Transfer Count: </h1>
-            <p>{data.transfersCount}
+            <h1 className="font-semibold">Total Supply: </h1>
+            <p>{ethers.formatUnits(data.totalSupply, 18)} MICKEY
 </p>
         </div>
     </div>

@@ -75,6 +75,6 @@
     @apply bg-background text-foreground;
   }
   .generalContainer{
-    @apply mx-auto w-[95%]  px-2.5 
+    @apply mx-auto w-[90%]  px-2.5 
   }
 }
