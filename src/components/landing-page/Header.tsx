@@ -11,7 +11,7 @@ const Header = () => {
     const router = useRouter()
   const {setIsAuthenticated } = useAuthContext()
     return (
-        <header className=" py-6 shadow-md w-full">
+        <header className=" border-b border-slate-300 py-6 shadow-md w-full">
             <nav className=' generalContainer flex justify-between items-center  '>
                 <div className='text-base md:text-xl font-bold'>
                     Mickey Token Holders 

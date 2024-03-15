@@ -28,7 +28,7 @@ export default function RootLayout({
 
       <html lang="en">
 
-        <body className={cn('min-h-screen font-sans antialiased grainy', roboto.className)}>{children}</body>
+        <body className={cn('min-h-screen  font-sans antialiased grainy', roboto.className)}>{children}</body>
         <Toaster />
       </html>
     </AuthContextProvider>
