@@ -1,9 +1,6 @@
 'use client'
 import React from 'react'
 import { Button } from "@/components/ui/button"
-import { navLinks } from '../../../utils/CONSTANTS'
-import Link from 'next/link'
-import { MenuIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useAuthContext } from '@/context/AuthContext'
 
@@ -17,23 +14,10 @@ const Header = () => {
                     Mickey Token Holders 
                 </div>
 
-                <div className='flex gap-2'>
-                    <Button variant={'outline'}>
-                        <Link href={'/explorer'}>
-                        Tags 
-                        </Link>
-                    </Button>
-
-                    <Button variant={'outline'}>
-                    <Link href={'/portal'}>
-                        Balances
-                        </Link>
-                    </Button>
-                </div>
                 
 
                 <Button
-                className='md:inline-block hidden'
+                className=''
                 onClick={() => {
                     setIsAuthenticated(false)
                     router.push('/')
