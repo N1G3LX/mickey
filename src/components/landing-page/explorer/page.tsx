@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from "react"
-import { EXPLORER_DATA } from "../../../utils/ethplorer"
+import { EXPLORER_DATA } from "../../../../utils/ethplorer"
 import Link from "next/link"
 
 import {

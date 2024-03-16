@@ -47,7 +47,7 @@ const TableData = () => {
         return mergedData;
     }, [data?.holders]);
 
-    console.log(mergedData)
+    // console.log(mergedData)
     
    
     function addCommasToNumberString(numberString) {
