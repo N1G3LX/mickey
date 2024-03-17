@@ -43,7 +43,6 @@ const ExplorerPage = () => {
     const [currentPage, setCurrentPage] = useState(1); // Track current page
     const [pageSize, setPageSize] = useState(10); // Items per page
     const [tableInfo, setTableInfo] = useState([])
-    // console.log(EXPLORER_DATA[0].userAddresses.items)
 
     useEffect(() => setTableInfo(EXPLORER_DATA[0].userAddresses.items), [])
 
@@ -85,7 +84,6 @@ const ExplorerPage = () => {
         const reader = new FileReader();
         reader.onload = (e) => {
             const data = JSON.parse(e.target.result);
-            // console.log(data)
             setTableInfo(data.userAddresses.items);
             setCurrentPage(1); // Reset to first page after data update
         };
