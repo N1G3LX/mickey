@@ -55,27 +55,33 @@ const TableData = () => {
     const formatBalance = (balance) => {
         const units = ["", "K", "M", "B", "T"]; // Units: "", Thousand, Million, Billion, Trillion
         const decimals = [0, 3, 6, 9, 12]; // Decimal places for each unit
-        
+      
         const new_balance = new BigNumber(balance).toFormat();
         const formatted = ethers.formatUnits(new_balance, 18);
         let balanceNumber = parseFloat(formatted);
         const formattedWithCommas = addCommasToNumberString(formatted);
         let unitIndex = 0;
-    while (balanceNumber >= 1000 && unitIndex < units.length - 1) {
-        balanceNumber /= 1000;
-        unitIndex++;
-    }
-
-    // Check if balance is in the "M" range but should be displayed in "B"
-    if (unitIndex === 2 && balanceNumber >= 1000) {
-        balanceNumber /= 1000;
-        unitIndex++;
-    }
-
-    
-    const formattedWithUnit = balanceNumber.toFixed(1) + " " + units[unitIndex];
+      
+        while (balanceNumber >= 1000 && unitIndex < units.length - 1) {
+          balanceNumber /= 1000;
+          unitIndex++;
+        }
+      
+        // Check if balance is in the "M" range but should be displayed in "B"
+        if (unitIndex === 2 && balanceNumber >= 1000) {
+          balanceNumber /= 1000;
+          unitIndex++;
+        }
+      
+        const formattedWithUnit = balanceNumber.toFixed(2) + units[unitIndex];
+        if(formattedWithUnit === '1000.00M'){
+            return '999.99 M'
+        }
         return formattedWithUnit;
     };
+    
+      const acc = new BigNumber('9.99999999e+26').toFormat();
+      const ac = ethers.formatUnits(acc, 18);
     function shortenAddress(address, maxLength = 12, mobileBreakpoint = 768) {
         // Check if on mobile based on screen width (adjust breakpoint if needed)
         const isMobile = window.innerWidth <= mobileBreakpoint;
@@ -157,7 +163,7 @@ const TableData = () => {
                                 <span className="md:inline-block hidden">MICKEY</span>
                         
                                     </TableCell>
-                                <TableCell className="font-medium text-sm sticky break-words max-w-[200px]">
+                                <TableCell className="font-medium md:text-sm text-[12px] sticky break-words max-w-[200px]">
                                     <Link href={`https://ethplorer.io/address/${account.Address}`} target="_blank">
 
                                         {shortenAddress(account.Address)}
