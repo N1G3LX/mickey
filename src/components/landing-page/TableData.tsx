@@ -73,7 +73,7 @@ const TableData = () => {
     }
 
     
-    const formattedWithUnit = balanceNumber.toFixed(2) + " " + units[unitIndex];
+    const formattedWithUnit = balanceNumber.toFixed(1) + " " + units[unitIndex];
         return formattedWithUnit;
     };
     function shortenAddress(address, maxLength = 12, mobileBreakpoint = 768) {
@@ -128,13 +128,13 @@ const TableData = () => {
     
 
     return (
-        <div className="w-[96%] font-sans md:w-[80%] mx-auto text-lg">
+        <div className="w-[98%] font-sans md:w-[80%] mx-auto text-lg">
             <Table>
                 <TableHeader>
                     <TableRow className=" rounded-lg font-bold text-balance md:text-lg">
                         <TableHead className="">Wallet</TableHead>
-                        <TableHead >Address</TableHead>
                         <TableHead>Balance </TableHead>
+                        <TableHead >Address</TableHead>
                         {/* <TableHead >Tags</TableHead> */}
                         {/* <TableHead>Notes </TableHead> */}
 
@@ -151,16 +151,19 @@ const TableData = () => {
                                     {account.Wallet}
 
                                 </TableCell>
-                                <TableCell className="font-medium text-md sticky break-words max-w-[200px]">
+                                <TableCell className="font-semibold gap-2 flex items-center !p-2 ">
+                                <span >{formatBalance(`${account.balance}`)}</span> 
+                                
+                                <span className="md:inline-block hidden">MICKEY</span>
+                        
+                                    </TableCell>
+                                <TableCell className="font-medium text-sm sticky break-words max-w-[200px]">
                                     <Link href={`https://ethplorer.io/address/${account.Address}`} target="_blank">
 
                                         {shortenAddress(account.Address)}
                                     </Link>
                                 </TableCell>
-                                <TableCell className="font-semibold">
-                                {formatBalance(`${account.balance}`)} MICKEY
-                        
-                                    </TableCell>
+                                
 
 
                             </TableRow>
