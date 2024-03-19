@@ -134,7 +134,7 @@ const TableData = () => {
     
 
     return (
-        <div className="w-[98%] font-sans md:w-[80%] mx-auto text-lg">
+        <div className="w-[98%] font-sans md:w-[90%] mx-auto text-lg">
             <Table>
                 <TableHeader>
                     <TableRow className=" rounded-lg font-bold text-balance md:text-lg">
@@ -157,13 +157,13 @@ const TableData = () => {
                                     {account.Wallet}
 
                                 </TableCell>
-                                <TableCell className="font-semibold gap-2 flex items-center !p-2 ">
+                                <TableCell className="font-semibold gap-2 flex items-center ">
                                 <span >{formatBalance(`${account.balance}`)}</span> 
                                 
                                 <span className="md:inline-block hidden">MICKEY</span>
                         
                                     </TableCell>
-                                <TableCell className="font-medium md:text-sm text-[12px] sticky break-words max-w-[200px]">
+                                <TableCell className="font-medium cursor-pointer text-[10px] s max-w-[200px]">
                                     <Link href={`https://ethplorer.io/address/${account.Address}`} target="_blank">
 
                                         {shortenAddress(account.Address)}
