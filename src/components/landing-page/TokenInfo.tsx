@@ -20,7 +20,7 @@ const TokenInfo = () => {
         )
     }
     return (
-    <div className="w-[95%] font-serif md:w-[80%] py-6 mx-auto flex flex-col space-y-3 border-slate-500 border  my-6 px-4 rounded-md shadow-lg">
+    <div className="w-[95%] font-serif md:w-[87%] py-6 mx-auto flex flex-col space-y-3 border-slate-500 border  my-6 px-4 rounded-md shadow-lg">
         <div>
             <h1 className="font-semibold text-xl  ">Token Information</h1>
         </div>

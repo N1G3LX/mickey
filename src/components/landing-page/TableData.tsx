@@ -134,7 +134,7 @@ const TableData = () => {
     
 
     return (
-        <div className="w-[98%] font-sans md:w-[90%] mx-auto text-lg">
+        <div className="w-[98%] font-sans md:w-[87%] mx-auto text-lg">
             <Table>
                 <TableHeader>
                     <TableRow className=" rounded-lg font-bold text-balance md:text-lg">
@@ -163,7 +163,7 @@ const TableData = () => {
                                 <span className="md:inline-block hidden">MICKEY</span>
                         
                                     </TableCell>
-                                <TableCell className="font-medium cursor-pointer text-[10px] s max-w-[200px]">
+                                <TableCell className="font-medium cursor-pointer text-[10px ] lg:text-sm max-w-[200px]">
                                     <Link href={`https://ethplorer.io/address/${account.Address}`} target="_blank">
 
                                         {shortenAddress(account.Address)}
