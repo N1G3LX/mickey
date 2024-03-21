@@ -6,6 +6,7 @@ import TokenInfo from "@/components/landing-page/TokenInfo";
 import { useAuthContext } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import UploadData from "@/components/upload-csv/UploadData";
 
 const Portal = () => {
   const {isAuthenticated} = useAuthContext()
@@ -18,9 +19,10 @@ const Portal = () => {
   return (
     <main className="flex flex-col">
     <Header />
+
+    <UploadData />
     <TokenInfo />
     <TableData />
-    
    </main>
   )
 }

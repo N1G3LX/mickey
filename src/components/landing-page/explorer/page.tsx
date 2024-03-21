@@ -92,9 +92,7 @@ const ExplorerPage = () => {
     return (
         <main className="flex flex-col">
             <Header />
-            <div className="w-[90%] my-4 font-sans md:w-[70%] mx-auto text-lg">
-                <Input type="file" className=" shadow-md  rounded-lg " onChange={handleFileUpload} accept=".json" />
-            </div>
+            
             <div className="w-[96%] pt-5 font-sans md:w-[80%] mx-auto text-lg">
                 <Table>
                     <TableHeader>

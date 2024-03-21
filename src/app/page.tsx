@@ -11,7 +11,7 @@ import { EXPLORER_DATA } from "../../utils/ethplorer";
 
 export default function Home() {
   const { toast } = useToast()
-  const {setIsAuthenticated } = useAuthContext()
+  const { setIsAuthenticated } = useAuthContext()
 
   const router = useRouter()
   const [inputPassword, setInputPassword] = useState('')

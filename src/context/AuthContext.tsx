@@ -4,6 +4,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 interface AuthContextType {
   isAuthenticated: boolean;
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+  loadingData: boolean;
+  setLoadingData: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const AuthContext = createContext({} as AuthContextType);
@@ -19,6 +21,8 @@ export function AuthContextProvider({ children }: { children: React.ReactNode })
     return false; // Default value if localStorage is not available
   });
 
+  const [loadingData, setLoadingData] = useState<boolean>(false)
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       localStorage?.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
@@ -26,7 +30,7 @@ export function AuthContextProvider({ children }: { children: React.ReactNode })
   }, [isAuthenticated]);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+    <AuthContext.Provider value={{ isAuthenticated,loadingData, setLoadingData, setIsAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );

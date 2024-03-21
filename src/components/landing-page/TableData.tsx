@@ -34,10 +34,12 @@ BigNumber.config({ FORMAT: format })
 const TableData = () => {
     const [currentPage, setCurrentPage] = useState(1); // Track current page
     const [pageSize, setPageSize] = useState(10); // Items per page
+  const {data: Wallets, isLoading: fetchWallets} = useSWR('/api/data', fetcher)
+// console.log(DATA_ACCOUNTS)
     const { data, error, isLoading } = useSWR(`${BASE_URL}/getTopTokenHolders/${TOKEN_ADDRESS}?apiKey=${API_KEY}&limit=500`, fetcher)
-
     const mergedData = useMemo(() => {
-        const mergedData = DATA_ACCOUNTS.map(item => {
+        if(!Wallets) return
+        const mergedData =Wallets?.wallets?.map(item => {
             const matchingAddress = data?.holders.find((data: any) => data.address.toLowerCase() === item.Address.toLowerCase());
             return {
                 ...item,
@@ -45,7 +47,7 @@ const TableData = () => {
             };
         });
         return mergedData;
-    }, [data?.holders]);
+    }, [data?.holders, Wallets]);
 
     
    
@@ -95,7 +97,7 @@ const TableData = () => {
         // Return full address if not mobile or address is short
         return address;
     }
-    if (isLoading) {
+    if (isLoading || fetchWallets) {
         return (
             <div className="flex flex-col space-y-3 w-[95%] py-6 mx-auto">
                 <Skeleton className="h-[125px] w-full rounded-xl" />
@@ -108,30 +110,7 @@ const TableData = () => {
     }
     if (error) return <div className="flex flex-col space-y-3 w-[95%] py-6 mx-auto text-center text-lg font-bold">Error fetching data: {error.message}</div>;
 
-    // Function to calculate total pages
-    const totalPages = Math.ceil(data?.holders.length / pageSize) || 1;
-
-    // Function to handle page change
-    const handlePageChange = (pageNumber) => {
-        if (pageNumber >= 1 && pageNumber <= totalPages) {
-            setCurrentPage(pageNumber);
-        }
-    };
-    // Function to jump to the last page
-    const jumpToLastPage = () => {
-        setCurrentPage(totalPages);
-    };
-
-    // Function to check if next button is disabled
-    const isNextDisabled = currentPage === totalPages;
-
-    const slicedData = data.holders.slice(
-        (currentPage - 1) * pageSize,
-        currentPage * pageSize
-    ); // Slice data for current page
-    
-
-    
+   
 
     return (
         <div className="w-[98%] font-sans md:w-[87%] mx-auto text-lg">
@@ -149,7 +128,7 @@ const TableData = () => {
                 </TableHeader>
                 <TableBody>
                     {
-                        mergedData.map((account) => (
+                        mergedData?.map((account) => (
                             <TableRow key={account.Address}>
                             
                                 <TableCell className="font-semibold">
