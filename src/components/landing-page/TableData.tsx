@@ -34,7 +34,15 @@ BigNumber.config({ FORMAT: format })
 const TableData = () => {
     const [currentPage, setCurrentPage] = useState(1); // Track current page
     const [pageSize, setPageSize] = useState(10); // Items per page
-  const {data: Wallets, isLoading: fetchWallets} = useSWR('/api/data', fetcher)
+  const {data: Wallets, isLoading: fetchWallets} = useSWR('/api/data', fetcher, {
+    revalidateOnMount: true,
+    
+        revalidateIfStale: true,
+        revalidateOnFocus: true,
+        revalidateOnReconnect: true
+      
+  
+})
 // console.log(DATA_ACCOUNTS)
     const { data, error, isLoading } = useSWR(`${BASE_URL}/getTopTokenHolders/${TOKEN_ADDRESS}?apiKey=${API_KEY}&limit=500`, fetcher)
     const mergedData = useMemo(() => {
