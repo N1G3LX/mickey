@@ -37,7 +37,7 @@ const TableData = () => {
     const [pageSize, setPageSize] = useState(10); // Items per page
   const {data: Wallets, isLoading: fetchWallets} = useSWR('/api/data', fetcher, {
     revalidateOnMount: true,
-        refreshInterval: 5000,
+        refreshInterval: 10000,
         revalidateIfStale: true,
         revalidateOnFocus: true,
         revalidateOnReconnect: true
