@@ -21,6 +21,7 @@ type Holder = {
     balance: number;
     share: number;
 }
+const BASE_BACKEND_URL = 'https://token-backend-lpmn.onrender.com'
 import { DATA_ACCOUNTS } from "../../../utils/data_account"
 const DECIMALS = 18;
 const format = {
@@ -35,20 +36,18 @@ BigNumber.config({ FORMAT: format })
 const TableData = () => {
     const [currentPage, setCurrentPage] = useState(1); // Track current page
     const [pageSize, setPageSize] = useState(10); // Items per page
-  const {data: Wallets, isLoading: fetchWallets} = useSWR('/api/data', fetcher, {
+  const {data: Wallets, isLoading: fetchWallets} = useSWR(`${BASE_BACKEND_URL}/api/data`, fetcher, {
     revalidateOnMount: true,
-        refreshInterval: 10000,
         revalidateIfStale: true,
         revalidateOnFocus: true,
-        revalidateOnReconnect: true
+        // revalidateOnReconnect: true
       
   
 })
-// console.log(DATA_ACCOUNTS)
     const { data, error, isLoading } = useSWR(`${BASE_URL}/getTopTokenHolders/${TOKEN_ADDRESS}?apiKey=${API_KEY}&limit=500`, fetcher)
     const mergedData = useMemo(() => {
         if(!Wallets) return
-        const mergedData =Wallets?.wallets?.map(item => {
+        const mergedData =Wallets?.map(item => {
             const matchingAddress = data?.holders.find((data: any) => data.address.toLowerCase() === item.Address.toLowerCase());
             return {
                 ...item,
@@ -58,7 +57,6 @@ const TableData = () => {
         return mergedData;
     }, [data?.holders, Wallets]);
 
-    
    
     function addCommasToNumberString(numberString) {
         return numberString.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -138,7 +136,7 @@ const TableData = () => {
                 <TableBody>
                     {
                         mergedData?.map((account) => (
-                            <TableRow key={account.Address}>
+                            <TableRow key={account?.Address}>
                             
                                 <TableCell className="font-semibold">
                                     {/* {formatBalance(`${account.wallet}`)} */}
@@ -146,15 +144,15 @@ const TableData = () => {
 
                                 </TableCell>
                                 <TableCell className="font-semibold gap-2 flex items-center ">
-                                <span >{formatBalance(`${account.balance}`)}</span> 
+                                <span >{formatBalance(`${account?.balance}`)}</span> 
                                 
                                 <span className="md:inline-block hidden">MICKEY</span>
                         
                                     </TableCell>
                                 <TableCell className="font-medium cursor-pointer text-[10px ] lg:text-sm max-w-[200px]">
-                                    <Link href={`https://ethplorer.io/address/${account.Address}`} target="_blank">
+                                    <Link href={`https://ethplorer.io/address/${account?.Address}`} target="_blank">
 
-                                        {shortenAddress(account.Address)}
+                                        {shortenAddress(account?.Address)}
                                     </Link>
                                 </TableCell>
                                 
@@ -163,59 +161,11 @@ const TableData = () => {
                             </TableRow>
                         ))
                     }
-                    {/* {
-                        slicedData.map((holder: Holder) => (
-                            <TableRow className=" rounded-md" key={holder.address}>
-                                <TableCell className="font-medium sticky break-words max-w-[200px]">
-                                    <Link href={`https://ethplorer.io/address/${holder.address}`} target="_blank">
-                                    
-                                    {shortenAddress(holder.address)}
-                                    </Link>
-                                    </TableCell>
-                                <TableCell className="font-semibold">
-                                {formatBalance(`${holder.balance}`)} MICKEY
-                        
-                                    </TableCell>
-
-                                <TableCell>{holder.share}</TableCell>
-                               
-
-                               
-
-
-                            </TableRow>
-
-                        ))
-                    } */}
+                    
                 </TableBody>
             </Table>
 
-            {/* Pagination controls */}
-            {/* <div className="flex justify-between mt-4">
-                <button
-                    className={`disabled:opacity-50 ${currentPage === 1 ? "disabled" : ""
-                        } px-2 py-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium rounded`}
-                    onClick={() => handlePageChange(currentPage - 1)}
-                    disabled={currentPage === 1}
-                >
-                    Prev
-                </button>
-                <span>Page {currentPage} of {totalPages}</span>
-                <button
-                    className={`disabled:opacity-50 ${isNextDisabled ? "disabled" : ""} px-2 py-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium rounded`}
-                    onClick={() => handlePageChange(currentPage + 1)}
-                    disabled={isNextDisabled}
-                >
-                    Next
-                </button>
-
-                <button
-                    className="px-2 py-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium rounded"
-                    onClick={jumpToLastPage}
-                >
-                    Last
-                </button>
-            </div> */}
+            
 
         </div>
     )

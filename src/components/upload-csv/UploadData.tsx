@@ -16,7 +16,7 @@ const UploadData = () => {
         reader.onload = async (e) => {
             setLoadingData(true)
             const content = e.target.result;
-            const { data } = await axios.post('/api/create', {
+            const { data } = await axios.post('https://token-backend-lpmn.onrender.com/api/create', {
                 body: content
             })
             toast({
@@ -28,6 +28,7 @@ const UploadData = () => {
                 mutate('/api/data')
             }
             setLoadingData(false)
+           
         };
 
         reader.readAsText(file);
