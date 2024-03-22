@@ -1,4 +1,4 @@
-import connectDB from "@/config/db";
+import {connectDB} from "@/config/db";
 import { NextResponse } from "next/server";
 import {Wallets} from "@/models/Wallets"
 export async function GET() {

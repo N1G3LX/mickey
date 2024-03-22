@@ -1,45 +1,26 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI;
+let isConnected = false; // track the connection
 
-let cached = global.mongoose;
+export const connectDB = async () => {
+  mongoose.set('strictQuery', true);
 
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
-}
-
-const connectDB = async () => {
-  if (cached.conn) {
-    console.log("🚀 Using cached connection");
-    return cached.conn;
-  }
-  if (!cached.promise) {
-    const opts = {
-      bufferCommands: false,
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    };
-
-    cached.promise = mongoose
-      .connect(MONGODB_URI, opts)
-      .then((mongoose) => {
-        console.log("✅ New connection established");
-        return mongoose;
-      })
-      .catch((error) => {
-        console.error("❌ Connection to database failed");
-        throw error;
-      });
+  if(isConnected) {
+    console.log('MongoDB is already connected');
+    return;
   }
 
   try {
-    cached.conn = await cached.promise;
-  } catch (e) {
-    cached.promise = null;
-    throw e;
+    await mongoose.connect(process.env.MONGODB_URI, {
+      // dbName: "share_prompt",
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+
+    isConnected = true;
+
+    console.log('MongoDB connected')
+  } catch (error) {
+    console.log(error);
   }
-
-  return cached.conn;
-};
-
-export default connectDB;
+}
