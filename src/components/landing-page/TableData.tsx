@@ -21,7 +21,7 @@ type Holder = {
     balance: number;
     share: number;
 }
-const BASE_BACKEND_URL = 'https://token-backend-lpmn.onrender.com'
+export const BASE_BACKEND_URL = 'https://token-backend-lpmn.onrender.com'
 import { DATA_ACCOUNTS } from "../../../utils/data_account"
 const DECIMALS = 18;
 const format = {

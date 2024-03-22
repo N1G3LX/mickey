@@ -5,7 +5,10 @@ import axios from "axios"
 import { useAuthContext } from '@/context/AuthContext';
 import { useToast } from '../ui/use-toast';
 import { useSWRConfig } from 'swr';
+import { BASE_BACKEND_URL } from '../landing-page/TableData';
+import { useRouter } from 'next/navigation';
 const UploadData = () => {
+    const router = useRouter()
     const { toast } = useToast()
     const { loadingData, setLoadingData } = useAuthContext()
     const { mutate } = useSWRConfig()
@@ -25,7 +28,8 @@ const UploadData = () => {
                 description: data?.message,
             })
             if (data?.message === 'Data Added Successfully') {
-                mutate('/api/data')
+                mutate(`${BASE_BACKEND_URL}/api/data`)
+                router.refresh()
             }
             setLoadingData(false)
            
