@@ -1,4 +1,7 @@
 'use client'
+export const fetchCache = 'force-no-store'
+// 'auto' | 'default-cache' | 'only-cache'
+// 'force-cache' | 'force-no-store' | 'default-no-store' | 'only-no-store'
 import Header from "@/components/landing-page/Header";
 
 import TableData from "@/components/landing-page/TableData";
