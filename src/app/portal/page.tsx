@@ -23,7 +23,7 @@ const Portal = () => {
     <main className="flex flex-col">
     <Header />
 
-    <UploadData />
+    {/* <UploadData /> */}
     <TokenInfo />
     <TableData />
    </main>

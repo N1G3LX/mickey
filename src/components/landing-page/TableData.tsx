@@ -23,6 +23,7 @@ type Holder = {
 }
 export const BASE_BACKEND_URL = 'https://token-backend-lpmn.onrender.com'
 import { DATA_ACCOUNTS } from "../../../utils/data_account"
+import { Wallets } from "../../../utils/CONSTANTS"
 const DECIMALS = 18;
 const format = {
     decimalSeparator: '.',
@@ -36,14 +37,15 @@ BigNumber.config({ FORMAT: format })
 const TableData = () => {
     const [currentPage, setCurrentPage] = useState(1); // Track current page
     const [pageSize, setPageSize] = useState(10); // Items per page
-  const {data: Wallets, isLoading: fetchWallets} = useSWR(`${BASE_BACKEND_URL}/api/data`, fetcher, {
-    revalidateOnMount: true,
-        revalidateIfStale: true,
-        revalidateOnFocus: true,
+//   const {data: Wallets, isLoading: fetchWallets} = useSWR(`${BASE_BACKEND_URL}/api/data`, fetcher, {
+    // revalidateOnMount: true,
+    //     revalidateIfStale: true,
+    //     revalidateOnFocus: true,
         // revalidateOnReconnect: true
       
   
-})
+// })
+
     const { data, error, isLoading } = useSWR(`${BASE_URL}/getTopTokenHolders/${TOKEN_ADDRESS}?apiKey=${API_KEY}&limit=500`, fetcher)
     const mergedData = useMemo(() => {
         if(!Wallets) return
@@ -55,7 +57,7 @@ const TableData = () => {
             };
         });
         return mergedData;
-    }, [data?.holders, Wallets]);
+    }, [data?.holders]);
 
    
     function addCommasToNumberString(numberString) {
@@ -104,7 +106,7 @@ const TableData = () => {
         // Return full address if not mobile or address is short
         return address;
     }
-    if (isLoading || fetchWallets) {
+    if (isLoading ) {
         return (
             <div className="flex flex-col space-y-3 w-[95%] py-6 mx-auto">
                 <Skeleton className="h-[125px] w-full rounded-xl" />
