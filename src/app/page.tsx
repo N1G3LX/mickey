@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation";
 import { useAuthContext } from "@/context/AuthContext";
-import { EXPLORER_DATA } from "../../utils/ethplorer";
 
 
 export default function Home() {

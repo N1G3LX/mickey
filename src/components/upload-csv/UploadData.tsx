@@ -12,13 +12,13 @@ const UploadData = () => {
     const { toast } = useToast()
     const { loadingData, setLoadingData } = useAuthContext()
     const { mutate } = useSWRConfig()
-    const handleFileUpload = (event) => {
+    const handleFileUpload = (event: any) => {
         const file = event.target.files[0];
         const reader = new FileReader();
 
         reader.onload = async (e) => {
             setLoadingData(true)
-            const content = e.target.result;
+            const content = e.target?.result;
             const { data } = await axios.post('https://token-backend-lpmn.onrender.com/api/create', {
                 body: content
             })

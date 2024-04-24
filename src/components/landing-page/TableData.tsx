@@ -60,10 +60,10 @@ const TableData = () => {
     }, [data?.holders]);
 
    
-    function addCommasToNumberString(numberString) {
+    function addCommasToNumberString(numberString : any) {
         return numberString.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
-    const formatBalance = (balance) => {
+    const formatBalance = (balance : any) => {
         const units = ["", "K", "M", "B", "T"]; // Units: "", Thousand, Million, Billion, Trillion
         const decimals = [0, 3, 6, 9, 12]; // Decimal places for each unit
       
@@ -93,7 +93,7 @@ const TableData = () => {
     
       const acc = new BigNumber('9.99999999e+26').toFormat();
       const ac = ethers.formatUnits(acc, 18);
-    function shortenAddress(address, maxLength = 12, mobileBreakpoint = 768) {
+    function shortenAddress(address: string | any[], maxLength = 12, mobileBreakpoint = 768) {
         // Check if on mobile based on screen width (adjust breakpoint if needed)
         const isMobile = window.innerWidth <= mobileBreakpoint;
 
